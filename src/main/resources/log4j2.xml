@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="warn" name="MyApp" packages="">
+<Configuration status="info" debug="true" name="MyApp" packages="">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}
@@ -9,17 +9,16 @@
                      filePattern="logs/app-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}
 - %msg%n"/> <Policies>
-            <SizeBasedTriggeringPolicy size="1 KB"/>
+            <SizeBasedTriggeringPolicy size="10 KB"/>
         </Policies>
             <DefaultRolloverStrategy max="1"/>
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Root level="info">
-            <AppenderRef ref="Console"/>
+        <Root level="debug">
             <AppenderRef ref="RollingFile"/>
         </Root>
-        <Logger name="demo.app" level="trace" additivity="true">
+        <Logger name="demo.app" level="debug" additivity="true">
         </Logger>
     </Loggers>
 </Configuration>

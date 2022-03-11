@@ -130,7 +130,6 @@ class BankImplTest {
             Exception exception = assertThrows(Bank.AccountIdException.class, () -> {
                 bankImpl.getBalance(1000L);
             });
-            System.out.println(exception.getMessage());
             assertEquals( accountIdExceptionTooBig, exception.getMessage() );
         }
         @Test
