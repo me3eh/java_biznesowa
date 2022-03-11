@@ -1,0 +1,52 @@
+@options
+@packages
+@argfile
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/matt3/Downloads/przyklad/zad_1/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2022. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/matt3/Downloads/przyklad/zad_1/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'myproject 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'C:/Users/matt3/Downloads/przyklad/zad_1/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'myproject 1.0-SNAPSHOT API'
+Bank
+demo.task1
+'C:/Users/matt3/Downloads/przyklad/zad_1/src/main/java/Bank/Bank.java'
+'C:/Users/matt3/Downloads/przyklad/zad_1/src/main/java/Bank/BankImpl.java'
+'C:/Users/matt3/Downloads/przyklad/zad_1/src/main/java/demo/task1/App.java'
+C:\Users\matt3\Downloads\przyklad\zad_1\src\main\java = 1646855310256
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\allclasses-index.html = 1646857684881
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\allclasses.html = 1646857684941
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\allpackages-index.html = 1646857684892
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\constant-values.html = 1646857684468
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\deprecated-list.html = 1646857684903
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\element-list = 1646857684333
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\help-doc.html = 1646857684998
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\index-all.html = 1646857684858
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\index.html = 1646857684963
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\member-search-index.js = 1646857684832
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\member-search-index.zip = 1646857684841
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\overview-summary.html = 1646857684978
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\overview-tree.html = 1646857684715
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\package-search-index.js = 1646857684735
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\package-search-index.zip = 1646857684797
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\script.js = 1646857685005
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\search.js = 1646857685028
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\serialized-form.html = 1646857684517
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\stylesheet.css = 1646857685004
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\type-search-index.js = 1646857684809
+C:\Users\matt3\Downloads\przyklad\zad_1\target\site\apidocs\type-search-index.zip = 1646857684815
