@@ -1,33 +1,13 @@
 package Bank;
 
-
-
-
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class BankImpl implements Bank{
     HashMap<String, Long> accounts = new HashMap();
     ArrayList<BigDecimal> bankAccount = new ArrayList<>();
-    protected static final Logger parentLogger = LogManager.getLogger();
-
-    public BankImpl(){
-
-        parentLogger.info("dwoja");
-//
-        parentLogger.info("dwoja");
-//        parentLogger.info("dwoja");
-//        parentLogger.info("dwoja");
-//        parentLogger.info("dwoja");
-//        parentLogger.info("dwoja");
-//        parentLogger.info("dwoja");
-//        parentLogger.info("dwoja");
-//        parentLogger.info("dwoja");
-    }
 
     @Override
     public Long createAccount(String name, String address) {

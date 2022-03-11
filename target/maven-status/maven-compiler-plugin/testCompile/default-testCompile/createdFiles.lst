@@ -1,7 +1,0 @@
-Bank\BankImplTest$CreateAccount.class
-Bank\BankImplTest$Deposit.class
-Bank\BankImplTest$FindAccount.class
-Bank\BankImplTest$getBalance.class
-Bank\BankImplTest$Withdraw.class
-Bank\BankImplTest.class
-Bank\BankImplTest$Transfer.class
