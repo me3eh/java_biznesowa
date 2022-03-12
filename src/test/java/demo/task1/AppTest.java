@@ -1,5 +1,8 @@
 package demo.task1;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -9,32 +12,38 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
 
-
-    @Test
-    public void testMax() {
-        App appTest = new App();
+    @Nested
+    @DisplayName("Group Max")
+    class Max{
         Double first = 1.2;
         Double second = 1.4;
+        App appTest;
+        @BeforeEach
+        void setUp(){
+            appTest = new App();
+        }
 
-        assertEquals(appTest.max(first, second), second);
+        @Test
+        @DisplayName("When comparing is first is bigger than second, second will be chosen")
+        public void testMax() {
+            assertEquals(appTest.max(first, second), second);
+        }
+
+        @Test
+        @DisplayName("When comparing is second is bigger than first, second will be chosen")
+        public void testMax2() {
+            assertEquals(appTest.max(second, first), second);
+        }
     }
 
-    @Test
-    public void testMax2() {
-        App appTest = new App();
-        Double first = 1.2;
-        Double second = 1.4;
-
-        assertEquals(appTest.max(second, first), second);
-    }
 
     @Test
+    @DisplayName("Test if output from method is equal to string")
     public void main() {
-        final PrintStream standardOut = System.out;
         final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         App appTest = new App();
-        String [] som = {"yep"};
+        String [] som = {"Some text"};
         appTest.main(som);
         assertEquals("start\r\n", outputStreamCaptor.toString());
     }
