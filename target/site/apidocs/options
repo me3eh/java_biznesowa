@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/matt3/.m2/repository/org/apache/logging/log4j/log4j-api/2.6.1/log4j-api-2.6.1.jar;C:/Users/matt3/.m2/repository/org/apache/logging/log4j/log4j-core/2.6.1/log4j-core-2.6.1.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/matt3/Pulpit/java_biznes/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2022. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/matt3/Pulpit/java_biznes/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'myproject 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'C:/Users/matt3/Pulpit/java_biznes/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'myproject 1.0-SNAPSHOT API'

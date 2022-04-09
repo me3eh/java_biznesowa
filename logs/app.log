@@ -1,0 +1,6 @@
+17:15:44.806 [main] DEBUG Bank.BankImpl - Started function: createAccount
+17:15:44.808 [main] DEBUG Bank.BankImpl - Started function: findAccount
+17:15:44.809 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+17:15:44.811 [main] DEBUG Bank.BankImpl - Started function: createAccount
+17:15:44.811 [main] DEBUG Bank.BankImpl - Started function: findAccount
+17:15:44.811 [main] DEBUG Bank.BankImpl - Finished function: findAccount

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BankImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myproject</a> &gt; <a href="index.source.html" class="el_package">java.Bank</a> &gt; <span class="el_source">BankImpl.java</span></div><h1>BankImpl.java</h1><pre class="source lang-java linenums">package java.Bank;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class BankImpl implements Bank{
+<span class="nc" id="L12">    HashMap&lt;String, Long&gt; accounts = new HashMap();</span>
+<span class="nc" id="L13">    ArrayList&lt;BigDecimal&gt; bankAccount = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L14">    protected static final Logger parentLogger = LogManager.getLogger(BankImpl.class);</span>
+
+<span class="nc" id="L16">    public BankImpl(){</span>
+<span class="nc" id="L17">        parentLogger.info(&quot;Object &quot; + this.getClass().toString() + &quot; created&quot;);</span>
+<span class="nc" id="L18">    }</span>
+
+    @Override
+    public Long createAccount(String name, String address) {
+<span class="nc" id="L22">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
+<span class="nc" id="L23">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L25">        Long accountFoundID = findAccount(name, address);</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if( accountFoundID == null) {</span>
+<span class="nc" id="L27">            bankAccount.add( BigDecimal.valueOf( 0 ) );</span>
+<span class="nc" id="L28">            Long idOfBankAccount = Long.valueOf(bankAccount.size() - 1);</span>
+<span class="nc" id="L29">            accounts.put( name + address, idOfBankAccount );</span>
+<span class="nc" id="L30">            return idOfBankAccount;</span>
+        }
+
+<span class="nc" id="L33">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L35">        return accountFoundID;</span>
+    }
+
+    @Override
+    public Long findAccount(String name, String address) {
+<span class="nc" id="L40">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
+<span class="nc" id="L41">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L43">        Long foundAccount = accounts.get(name + address);</span>
+
+<span class="nc" id="L45">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L47">        return foundAccount;</span>
+    }
+
+    @Override
+    public void deposit(Long id, BigDecimal amount) throws AccountIdException {
+<span class="nc" id="L52">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
+<span class="nc" id="L53">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L55">        checkIfIdsGood(id);</span>
+<span class="nc" id="L56">        BigDecimal moneyInAccount = bankAccount.get( Math.toIntExact( id ) );</span>
+<span class="nc" id="L57">        bankAccount.set(Math.toIntExact(id), moneyInAccount.add( amount, MathContext.DECIMAL128) );</span>
+
+<span class="nc" id="L59">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+<span class="nc" id="L60">    }</span>
+
+    @Override
+    public BigDecimal getBalance(Long id) throws AccountIdException{
+<span class="nc" id="L64">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
+<span class="nc" id="L65">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L67">        checkIfIdsGood(id);</span>
+<span class="nc" id="L68">        BigDecimal bankAccountFound = bankAccount.get(Math.toIntExact(id) );</span>
+
+<span class="nc" id="L70">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L72">        return bankAccountFound;</span>
+    }
+
+    @Override
+    public void withdraw(Long id, BigDecimal amount) throws AccountIdException, InsufficientFundsException{
+<span class="nc" id="L77">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
+<span class="nc" id="L78">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L80">        checkIfIdsGood(id);</span>
+
+<span class="nc" id="L82">        BigDecimal moneyInAccount = bankAccount.get( Math.toIntExact(id) );</span>
+
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if( moneyInAccount.subtract( amount ).compareTo( BigDecimal.valueOf( 0 ) ) &lt; 0 )</span>
+<span class="nc" id="L85">            throw new InsufficientFundsException(&quot;Insufficient Funds&quot;);</span>
+<span class="nc" id="L86">        bankAccount.set( Math.toIntExact(id), moneyInAccount.subtract( amount, MathContext.DECIMAL128 ) );</span>
+
+<span class="nc" id="L88">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+<span class="nc" id="L89">    }</span>
+
+    @Override
+    public void transfer(Long idSource, Long idDestination, BigDecimal amount) throws AccountIdException,
+                                                                                        InsufficientFundsException {
+<span class="nc" id="L94">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
+<span class="nc" id="L95">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
+
+<span class="nc" id="L97">        checkIfIdsGood(idSource);</span>
+<span class="nc" id="L98">        checkIfIdsGood(idDestination);</span>
+
+<span class="nc" id="L100">        withdraw(idSource, amount);</span>
+<span class="nc" id="L101">        deposit(idDestination, amount);</span>
+
+<span class="nc" id="L103">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+<span class="nc" id="L104">    }</span>
+    private void checkIfIdsGood(Long id) throws AccountIdException{
+<span class="nc" id="L106">        String exceptionMessage = &quot;&quot;;</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">        if( bankAccount.size() &lt; id )</span>
+<span class="nc" id="L108">            exceptionMessage = &quot;Cannot find - too big id&quot;;</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">        else if( id &lt; 0 )</span>
+<span class="nc" id="L110">             exceptionMessage = &quot;Cannot find - too small id&quot;;</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">        if( !exceptionMessage.isEmpty() ) {</span>
+<span class="nc" id="L112">            parentLogger.error(&quot;Thrown error: &quot; + AccountIdException.class + &quot; with communicate: &quot; + exceptionMessage);</span>
+<span class="nc" id="L113">            throw new AccountIdException(exceptionMessage);</span>
+        }
+<span class="nc" id="L115">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

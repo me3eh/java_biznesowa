@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bank.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myproject</a> &gt; <a href="index.source.html" class="el_package">java.Bank</a> &gt; <span class="el_source">Bank.java</span></div><h1>Bank.java</h1><pre class="source lang-java linenums">package java.Bank;
+import java.math.BigDecimal;
+
+public interface Bank {
+    /**
+     * Tworzy nowe lub zwraca id istniejącego konta.
+     *
+     * @param name imie i nazwisko własciciela
+     * @param address adres własciciela
+     * @return id utworzonego lub istniejacego konta.
+     */
+    Long createAccount(String name, String address);
+
+    /**
+     * Znajduje identyfikator konta.
+     *
+     * @param name imię i nazwisko właściciela
+     * @param address adres właściciela
+     * @return id konta lub null, gdy brak konta o podanych parametrach
+     */
+    Long findAccount(String name, String address);
+
+    /**
+     * Dodaje srodki do konta.
+     *
+     * @param id id konta
+     * @param amount srodki
+     * @throws AccountIdException gdy id konta jest nieprawidlowe
+     */
+    void deposit(Long id, BigDecimal amount);
+
+    /**
+     * Zwraca ilosc srodkow na koncie.
+     *
+     * @param id id konta
+     * @return srodki
+     * @throws AccountIdException gdy id konta jest nieprawidlowe
+     */
+    BigDecimal getBalance(Long id);
+
+    /**
+     * Pobiera srodki z konta.
+     *
+     * @param id id konta
+     * @param amount srodki
+     * @throws AccountIdException gdy id konta jest nieprawidlowe
+     * @throws InsufficientFundsException gdy srodki na koncie nie sa
+     * wystarczajace do wykonania operacji
+     */
+    void withdraw(Long id, BigDecimal amount);
+
+    /**
+     * Przelewa srodki miedzy kontami.
+     *
+     * @param idSource id konta
+     * @param idDestination id konta
+     * @param amount srodki
+     * @throws AccountIdException gdy id konta jest nieprawidlowe
+     * @throws InsufficientFundsException gdy srodki na koncie nie sa
+     * wystarczajace do wykonania operacji
+     */
+    void transfer(Long idSource, Long idDestination, BigDecimal amount);
+
+    class InsufficientFundsException extends RuntimeException {
+        public InsufficientFundsException(String insufficient_funds) {
+<span class="nc" id="L66">            super( insufficient_funds );</span>
+<span class="nc" id="L67">        }</span>
+    };
+
+    class AccountIdException extends RuntimeException {
+        public AccountIdException(String cannot_find_too_big_id) {
+<span class="nc" id="L72">                super(cannot_find_too_big_id);</span>
+<span class="nc" id="L73">        }</span>
+    };
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

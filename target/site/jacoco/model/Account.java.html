@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myproject</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package model;
+
+import dao.AccountDaoJpaImpl;
+import dao.AccountOperationDao;
+import dao.AccountOperationDaoJpaImpl;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+@Entity
+@Table(name=&quot;Account&quot;)
+public class Account extends AbstractModel{
+    private String name;
+    private BigDecimal balance;
+    private String address;
+
+<span class="fc" id="L22">    @OneToMany(mappedBy = &quot;account&quot;, orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)</span>
+    private List&lt;AccountOperation&gt; accountOperations = new LinkedList&lt;&gt;();
+
+
+<span class="fc" id="L26">    public Account(){</span>
+<span class="fc" id="L27">        balance = new BigDecimal(&quot;0&quot;);</span>
+<span class="fc" id="L28">    }</span>
+
+<span class="fc" id="L30">    public Account(String name, String address){</span>
+<span class="fc" id="L31">        this.name = name;</span>
+<span class="fc" id="L32">        this.address = address;</span>
+<span class="fc" id="L33">        balance = new BigDecimal(&quot;0&quot;);</span>
+<span class="fc" id="L34">    }</span>
+
+    public BigDecimal getBalance() {
+<span class="fc" id="L37">        return balance;</span>
+    }
+
+    public void addAmount(BigDecimal balance){
+<span class="fc" id="L41">        System.out.println( this.balance );</span>
+<span class="fc" id="L42">        this.balance = this.balance.add(balance);</span>
+<span class="fc" id="L43">        System.out.println( this.balance );</span>
+<span class="fc" id="L44">    }</span>
+
+    public boolean subtractAmount(BigDecimal balance){
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if(this.balance.compareTo(balance) &lt; 0)</span>
+<span class="fc" id="L48">            return false;</span>
+<span class="fc" id="L49">        this.balance = this.balance.subtract(balance);</span>
+<span class="fc" id="L50">        return true;</span>
+    }
+
+    public void addAccountOperation(BigDecimal amount, AccountOperation.OperationType type){
+<span class="fc" id="L54">        AccountOperation aO = new AccountOperation(this, amount, type);</span>
+<span class="fc" id="L55">        AccountOperationDao dao = new AccountOperationDaoJpaImpl();</span>
+<span class="fc" id="L56">        dao.save(aO);</span>
+<span class="fc" id="L57">        accountOperations.add( aO );</span>
+<span class="fc" id="L58">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

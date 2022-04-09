@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myproject</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">AbstractModel.java</span></div><h1>AbstractModel.java</h1><pre class="source lang-java linenums">package model;
+
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+@MappedSuperclass
+public class AbstractModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
+    private LocalDateTime creationDate;
+
+    public LocalDateTime getUpdateDate() {
+<span class="nc" id="L18">        return updateDate;</span>
+    }
+
+    public void setUpdateDate(LocalDateTime updateDate) {
+<span class="nc" id="L22">        this.updateDate = updateDate;</span>
+<span class="nc" id="L23">    }</span>
+
+    private LocalDateTime updateDate;
+
+    public LocalDateTime getCreationDate() {
+<span class="nc" id="L28">        return creationDate;</span>
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+<span class="nc" id="L32">        this.creationDate = creationDate;</span>
+<span class="nc" id="L33">    }</span>
+
+<span class="fc" id="L35">    public AbstractModel() {</span>
+<span class="fc" id="L36">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L39">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L43">        this.id = id;</span>
+<span class="nc" id="L44">    }</span>
+
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        AbstractModel that = (AbstractModel) o;
+//
+//        return Objects.equals(this.id,((AbstractModel) o).id);
+//    }
+
+    @Override
+    public int hashCode() {
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        return id != null ? id.hashCode() : 0;</span>
+    }
+
+    @PrePersist
+    public void PrePersist(){
+<span class="fc" id="L64">        creationDate = LocalDateTime.now();</span>
+<span class="fc" id="L65">        updateDate = LocalDateTime.now();</span>
+<span class="fc" id="L66">    }</span>
+
+    @PreUpdate
+    public void PreUpdate(){
+<span class="fc" id="L70">        updateDate = LocalDateTime.now();</span>
+<span class="fc" id="L71">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

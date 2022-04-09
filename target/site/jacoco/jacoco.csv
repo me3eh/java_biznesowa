@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+myproject,dao,AccountDaoJpaImpl,0,39,0,2,0,12,0,3,0,2
+myproject,dao,AccountOperationDaoJpaImpl,0,3,0,0,0,1,0,1,0,1
+myproject,dao,GenericDaoJpaImpl,0,110,0,0,0,36,0,7,0,7
+myproject,Bank,Bank.AccountIdException,0,4,0,0,0,2,0,1,0,1
+myproject,Bank,BankImpl,0,448,0,14,0,81,0,16,0,9
+myproject,Bank,Bank.InsufficientFundsException,0,4,0,0,0,2,0,1,0,1
+myproject,utils,JpaFactory,0,19,0,2,0,7,0,4,0,3
+myproject,model,Account,0,87,0,2,0,23,0,7,0,6
+myproject,model,AccountOperation,0,15,0,0,0,6,0,2,0,2
+myproject,model,AccountOperation.OperationType,0,34,0,0,0,1,0,1,0,1
+myproject,model,AbstractModel,19,25,1,1,8,9,6,5,5,5
+myproject,task1,App,0,15,0,2,0,4,0,4,0,3
