@@ -9,7 +9,6 @@ import org.junit.jupiter.api.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -285,21 +284,27 @@ class BankImplTest {
     @DisplayName("Named Queries")
     class NamedQueries{
         Faker faker;
+        String firstName;
+        String firstAddress;
+        String secondName;
+        String secondAddress;
         @BeforeEach
         void setUp(){
             faker = new Faker();
+            firstName = faker.name().firstName();
+            firstAddress = faker.address().streetAddress();
+            secondName = faker.name().firstName();
+            secondAddress = faker.address().streetAddress();
         }
         @Test
         @DisplayName("Named Query checks as good")
         void accountByNameAndAddress(){
-            String name = faker.name().firstName();
-            String address = faker.address().streetAddress();
 
-            bankImpl.createAccount(name, address);
-            Account som = new AccountDaoJpaImpl().accountByNameAndAddress(name, address);
+            bankImpl.createAccount(firstName, firstAddress);
+            Account som = new AccountDaoJpaImpl().accountByNameAndAddress(firstName, firstAddress);
 
-            assertEquals(som.getName(), name);
-            assertEquals(som.getAddress(), address);
+            assertEquals(som.getName(), firstName);
+            assertEquals(som.getAddress(), firstAddress);
         }
         @Test
         @DisplayName("accountByPrefix")
@@ -317,18 +322,22 @@ class BankImplTest {
         @Test
         @DisplayName("accountsWithBalanceInRange")
         void accountByRangedBalance(){
-            long idFirst = bankImpl.createAccount("Mateusz", "Aha");
-            long idSecond = bankImpl.createAccount("Maciek", "Take");
-            long idThird = bankImpl.createAccount("Piotrek", "On");
-            long idFourth = bankImpl.createAccount("Matylda", "Me");
+            long idFirst = bankImpl.createAccount(firstName, firstAddress);
+            long idSecond = bankImpl.createAccount(secondName, secondAddress);
+            long idThird = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
+            long idFourth = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
             bankImpl.deposit(idFirst, new BigDecimal("200"));
             bankImpl.deposit(idSecond, new BigDecimal("300"));
             bankImpl.deposit(idThird, new BigDecimal("400"));
             bankImpl.deposit(idFourth, new BigDecimal("100"));
 
             List<Account> accountList =
-                    new AccountDaoJpaImpl().accountByRangedBalance(new BigDecimal("199"), new BigDecimal("350") );
-            assertEquals(accountList.size(), 2);
+                    new AccountDaoJpaImpl().accountByRangedBalance(new BigDecimal("200"), new BigDecimal("350") );
+            assertEquals(2, accountList.size());
+            assertEquals(firstName, accountList.get(0).getName());
+            assertEquals(firstAddress, accountList.get(0).getAddress());
+            assertEquals(secondName, accountList.get(1).getName());
+            assertEquals(secondAddress, accountList.get(1).getAddress());
         }
 
         @Test
@@ -336,8 +345,8 @@ class BankImplTest {
         void accountsWithMaxBalance(){
             long idFirst = bankImpl.createAccount("Mateusz", "Sio");
             long idSecond = bankImpl.createAccount("Maciek", "Sio");
-            long idThird = bankImpl.createAccount("Piotrek", "Sio");
-            long idFourth = bankImpl.createAccount("Matylda", "Sio");
+            long idThird = bankImpl.createAccount(firstName, firstAddress);
+            long idFourth = bankImpl.createAccount(secondName, secondAddress);
             bankImpl.deposit(idFirst, new BigDecimal("200"));
             bankImpl.deposit(idSecond, new BigDecimal("300"));
             bankImpl.deposit(idThird, new BigDecimal("400"));
@@ -345,21 +354,21 @@ class BankImplTest {
             AccountDao ac = new AccountDaoJpaImpl();
             List<Account> listOfAccounts = ac.accountWithMaxBalance();
             assertEquals(listOfAccounts.size(), 1);
-            assertEquals(listOfAccounts.get(0).getName(), "Piotrek");
+            assertEquals(listOfAccounts.get(0).getName(), firstName);
 
             bankImpl.deposit(idFourth, new BigDecimal("300"));
             listOfAccounts = ac.accountWithMaxBalance();
             assertEquals(listOfAccounts.size(), 2);
-            assertEquals(listOfAccounts.get(0).getName(), "Piotrek");
-            assertEquals(listOfAccounts.get(1).getName(), "Matylda");
+            assertEquals(listOfAccounts.get(0).getName(), firstName);
+            assertEquals(listOfAccounts.get(1).getName(), secondName);
         }
         @Test
         @DisplayName("operationsOnSpecificAccountInRangeOfDates")
         void operationsOnSpecificAccountInRangeOfDates() {
             LocalDateTime startingTime = LocalDateTime.now();
 
-            long firstId = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
-            long secondId = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
+            long firstId = bankImpl.createAccount(firstName, firstAddress);
+            long secondId = bankImpl.createAccount(secondName, secondAddress);
             BigDecimal amountOfMoney = new BigDecimal("300");
             bankImpl.deposit(firstId, amountOfMoney);
 //          sleep for 5 seconds and do a transfer
@@ -401,14 +410,10 @@ class BankImplTest {
             List<Account> listOfAccounts = dao.accountsWithNoAccountOperation();
             assertNull(listOfAccounts);
 
-            String nameOfAccountWithNoAccountOperation = faker.name().firstName();
-            String addressOfAccountWithNoAccountOperation = faker.name().firstName();
-
             long idFirst = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
             long idSecond = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
             long idThird = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
-            long idFourth = bankImpl.createAccount(nameOfAccountWithNoAccountOperation,
-                                                    addressOfAccountWithNoAccountOperation);
+            long idFourth = bankImpl.createAccount(firstName, firstAddress);
             BigDecimal money = new BigDecimal("300");
 
             bankImpl.deposit(idFirst, money );
@@ -419,8 +424,8 @@ class BankImplTest {
             listOfAccounts = dao.accountsWithNoAccountOperation();
             assertEquals( 1, listOfAccounts.size());
             assertEquals( idFourth, listOfAccounts.get(0).getId());
-            assertEquals( nameOfAccountWithNoAccountOperation, listOfAccounts.get(0).getName());
-            assertEquals( addressOfAccountWithNoAccountOperation, listOfAccounts.get(0).getAddress());
+            assertEquals( firstName, listOfAccounts.get(0).getName());
+            assertEquals( firstAddress, listOfAccounts.get(0).getAddress());
         }
         @Test
         @DisplayName("AccountsWithMaxAccountOfOperations")
@@ -430,14 +435,9 @@ class BankImplTest {
 
             assertNull(listOfAccounts);
 
-            String nameOfFirst = faker.name().firstName();
-            String nameOfThird = faker.name().firstName();
-            String addressOfFirst = faker.address().streetAddress();
-            String addressOfThird = faker.address().streetAddress();
-
-            long idFirst = bankImpl.createAccount(nameOfFirst, addressOfFirst);
+            long idFirst = bankImpl.createAccount(firstName, firstAddress);
             long idSecond = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
-            long idThird = bankImpl.createAccount(nameOfThird, addressOfThird);
+            long idThird = bankImpl.createAccount(secondName, secondAddress);
 
             bankImpl.deposit(idFirst, new BigDecimal("300"));
             bankImpl.deposit(idFirst, new BigDecimal("300"));
@@ -451,10 +451,10 @@ class BankImplTest {
             listOfAccounts = dao.accountsWithBiggestAmountOfOperations();
 
             assertEquals(2, listOfAccounts.size());
-            assertEquals(nameOfFirst, listOfAccounts.get(0).getName());
-            assertEquals(nameOfThird, listOfAccounts.get(1).getName());
-            assertEquals(addressOfFirst, listOfAccounts.get(0).getAddress());
-            assertEquals(addressOfThird, listOfAccounts.get(1).getAddress());
+            assertEquals(firstName, listOfAccounts.get(0).getName());
+            assertEquals(secondName, listOfAccounts.get(1).getName());
+            assertEquals(firstAddress, listOfAccounts.get(0).getAddress());
+            assertEquals(secondAddress, listOfAccounts.get(1).getAddress());
         }
         @Test
         @DisplayName("mostFrequentOperations")
@@ -464,8 +464,8 @@ class BankImplTest {
 
             assertNull(operationType);
 
-            long idFirst = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
-            long idSecond = bankImpl.createAccount(faker.name().firstName(), faker.address().streetAddress());
+            long idFirst = bankImpl.createAccount(firstName, firstAddress);
+            long idSecond = bankImpl.createAccount(secondName, secondAddress);
 
             bankImpl.deposit(idFirst, new BigDecimal("300"));
             bankImpl.deposit(idFirst, new BigDecimal("300"));
