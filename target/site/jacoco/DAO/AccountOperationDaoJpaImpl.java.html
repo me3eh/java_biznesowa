@@ -2,7 +2,38 @@
 
 import model.Account;
 import model.AccountOperation;
+import model.TransferOperation;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
-<span class="fc" id="L6">public class AccountOperationDaoJpaImpl extends GenericDaoJpaImpl&lt;AccountOperation,Long&gt; implements AccountOperationDao{</span>
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+<span class="fc" id="L14">public class AccountOperationDaoJpaImpl extends GenericDaoJpaImpl&lt;AccountOperation,Long&gt; implements AccountOperationDao{</span>
+    public List&lt;AccountOperation&gt; operationsOnSpecificAccountInRangeOfDates(Long id, LocalDateTime start, LocalDateTime end){
+<span class="fc" id="L16">        TypedQuery&lt;AccountOperation&gt; query =</span>
+<span class="fc" id="L17">                getEntityManager().createNamedQuery(&quot;operationsOnSpecificAccountInRangeOfDates&quot;,</span>
+                                                    AccountOperation.class);
+<span class="fc" id="L19">        query.setParameter(1, id);</span>
+<span class="fc" id="L20">        query.setParameter(2, start);</span>
+<span class="fc" id="L21">        query.setParameter(3, end);</span>
+
+<span class="fc" id="L23">        List&lt;AccountOperation&gt; results = query.getResultList();</span>
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if( results.isEmpty() )</span>
+<span class="nc" id="L25">            return null;</span>
+<span class="fc" id="L26">        return results;</span>
+    }
+    public AccountOperation.OperationType whichOperationWasTheMostFrequent(){
+<span class="fc" id="L29">        EntityManager em = getEntityManager();</span>
+<span class="fc" id="L30">        TypedQuery&lt;AccountOperation.OperationType&gt; query = em.createNamedQuery(&quot;whichOperationWasTheMostFrequent&quot;,</span>
+                                                                    AccountOperation.OperationType.class);
+
+<span class="fc" id="L33">        List&lt;AccountOperation.OperationType&gt; results = query.getResultList();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if( results.isEmpty() )</span>
+<span class="fc" id="L35">            return null;</span>
+<span class="fc" id="L36">        return results.get(0);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

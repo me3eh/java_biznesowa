@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: Bank.BankImplTest
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.409 s - in Bank.BankImplTest
+Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.386 s - in Bank.BankImplTest

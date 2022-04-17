@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransferOperation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myproject</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">TransferOperation.java</span></div><h1>TransferOperation.java</h1><pre class="source lang-java linenums">package model;
+
+import dao.TransferOperationDao;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+
+@Entity
+@Table(name=&quot;TransferOperation&quot;)
+@Inheritance(strategy= InheritanceType.JOINED)
+public class TransferOperation extends AccountOperation{
+
+    private String nameOfTransfer;
+
+    @ManyToOne
+    private Account otherAccount;
+
+    public TransferOperation(Account account, BigDecimal amount,
+                             OperationType type, String nameOfTransfer, Account otherAccount){
+<span class="fc" id="L20">        super(account, amount, type);</span>
+<span class="fc" id="L21">        this.nameOfTransfer =  nameOfTransfer;</span>
+<span class="fc" id="L22">        this.otherAccount = otherAccount;</span>
+<span class="fc" id="L23">    }</span>
+
+<span class="fc" id="L25">    public TransferOperation() {</span>
+
+<span class="fc" id="L27">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

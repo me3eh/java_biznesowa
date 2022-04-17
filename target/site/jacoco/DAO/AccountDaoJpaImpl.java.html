@@ -4,23 +4,90 @@ import model.Account;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-<span class="fc" id="L10">public class AccountDaoJpaImpl extends GenericDaoJpaImpl&lt;Account,Long&gt; implements AccountDao {</span>
+<span class="fc" id="L12">public class AccountDaoJpaImpl extends GenericDaoJpaImpl&lt;Account,Long&gt; implements AccountDao {</span>
 
     public Account getByClass(String name, String address){
-<span class="fc" id="L13">        EntityManager em = getEntityManager();</span>
-<span class="fc" id="L14">        String hql = &quot;FROM Account E WHERE E.name = :account_name AND E.address = :account_address&quot;;</span>
-<span class="fc" id="L15">        Query query = em.createQuery(hql);</span>
-<span class="fc" id="L16">        query.setParameter(&quot;account_name&quot;,name);</span>
-<span class="fc" id="L17">        query.setParameter(&quot;account_address&quot;,address);</span>
-<span class="fc" id="L18">        List&lt;Account&gt; account = query.getResultList();</span>
-<span class="fc" id="L19">        em.close();</span>
-<span class="fc" id="L20">        Account foundAccount = null;</span>
-<span class="fc bfc" id="L21" title="All 2 branches covered.">        if( !account.isEmpty() )</span>
-<span class="fc" id="L22">            foundAccount = account.get(0);</span>
-<span class="fc" id="L23">        return foundAccount;</span>
+<span class="fc" id="L15">        EntityManager em = getEntityManager();</span>
+<span class="fc" id="L16">        String hql = &quot;FROM Account E WHERE E.name = :account_name AND E.address = :account_address&quot;;</span>
+<span class="fc" id="L17">        Query query = em.createQuery(hql);</span>
+<span class="fc" id="L18">        query.setParameter(&quot;account_name&quot;,name);</span>
+<span class="fc" id="L19">        query.setParameter(&quot;account_address&quot;,address);</span>
+<span class="fc" id="L20">        List&lt;Account&gt; account = query.getResultList();</span>
+<span class="fc" id="L21">        em.close();</span>
+<span class="fc" id="L22">        Account foundAccount = null;</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if( !account.isEmpty() )</span>
+<span class="fc" id="L24">            foundAccount = account.get(0);</span>
+<span class="fc" id="L25">        return foundAccount;</span>
     }
+    public Account accountByNameAndAddress(String name, String address){
+<span class="fc" id="L28">        EntityManager em = new AccountDaoJpaImpl().getEntityManager();</span>
+<span class="fc" id="L29">        TypedQuery&lt;Account&gt; query = em.createNamedQuery(&quot;getAccountByNameAndAddress&quot;, Account.class);</span>
+<span class="fc" id="L30">        query.setParameter(1, address);</span>
+<span class="fc" id="L31">        query.setParameter(2, name);</span>
+<span class="fc" id="L32">        List&lt;Account&gt; results = query.getResultList();</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if( results.isEmpty() )</span>
+<span class="nc" id="L34">            return null;</span>
+<span class="fc" id="L35">        return results.get(0);</span>
+    }
+    public List&lt;Account&gt; accountByPrefix(String name){
+<span class="fc" id="L38">        EntityManager em = getEntityManager();</span>
+<span class="fc" id="L39">        TypedQuery&lt;Account&gt; query = em.createNamedQuery(&quot;getAccountByPrefix&quot;, Account.class);</span>
+<span class="fc" id="L40">        query.setParameter(1, name + &quot;%&quot;);</span>
+<span class="fc" id="L41">        List&lt;Account&gt; results = query.getResultList();</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if( results.isEmpty() )</span>
+<span class="nc" id="L43">            return null;</span>
+<span class="fc" id="L44">        return results;</span>
+    }
+
+    public List&lt;Account&gt; accountByRangedBalance(BigDecimal firstAmount, BigDecimal secondAmount){
+<span class="fc" id="L48">        EntityManager em = getEntityManager();</span>
+<span class="fc" id="L49">        TypedQuery&lt;Account&gt; query = em.createNamedQuery(&quot;getAccountsWithBalanceInRange&quot;, Account.class);</span>
+<span class="fc" id="L50">        query.setParameter(1, firstAmount);</span>
+<span class="fc" id="L51">        query.setParameter(2, secondAmount);</span>
+
+<span class="fc" id="L53">        List&lt;Account&gt; results = query.getResultList();</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if( results.isEmpty() )</span>
+<span class="nc" id="L55">            return null;</span>
+<span class="fc" id="L56">        return results;</span>
+    }
+
+    public List&lt;Account&gt; accountWithMaxBalance(){
+<span class="fc" id="L60">        EntityManager em = getEntityManager();</span>
+<span class="fc" id="L61">        TypedQuery&lt;Account&gt; query = em.createNamedQuery(&quot;getAccountWithMaxBalance&quot;, Account.class);</span>
+
+<span class="fc" id="L63">        List&lt;Account&gt; results = query.getResultList();</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if( results.isEmpty() )</span>
+<span class="nc" id="L65">            return null;</span>
+<span class="fc" id="L66">        return results;</span>
+    }
+
+    public List&lt;Account&gt; accountsWithNoAccountOperation(){
+<span class="fc" id="L70">        EntityManager em = getEntityManager();</span>
+<span class="fc" id="L71">        TypedQuery&lt;Account&gt; query = em.createNamedQuery(&quot;AccountWithNoAccountOperation&quot;, Account.class);</span>
+
+<span class="fc" id="L73">        List&lt;Account&gt; results = query.getResultList();</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if( results.isEmpty() )</span>
+<span class="nc" id="L75">            return null;</span>
+<span class="fc" id="L76">        return results;</span>
+    }
+
+    public List&lt;Account&gt; accountsWithBiggestAmountOfOperations(){
+<span class="fc" id="L80">        EntityManager em = getEntityManager();</span>
+<span class="fc" id="L81">        TypedQuery&lt;Account&gt; query = em.createNamedQuery(&quot;getAccountsWithBiggestAmountOfOperations&quot;, Account.class);</span>
+
+<span class="fc" id="L83">        List&lt;Account&gt; results = query.getResultList();</span>
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if( results.isEmpty() )</span>
+<span class="nc" id="L85">            return null;</span>
+<span class="fc" id="L86">        return results;</span>
+    }
+
+
+
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

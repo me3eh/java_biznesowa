@@ -1,135 +1,134 @@
-17:15:44.390 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.411 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.418 [main] DEBUG Bank.BankImpl - Started function: transfer
-17:15:44.418 [main] DEBUG Bank.BankImpl - Started function: withdraw
-17:15:44.432 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.432 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.432 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.437 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.449 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.449 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.450 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.453 [main] DEBUG Bank.BankImpl - Started function: transfer
-17:15:44.453 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Same ids
-17:15:44.483 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.483 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.483 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.484 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.487 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.487 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.488 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.490 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.497 [main] DEBUG Bank.BankImpl - Finished function: deposit
-17:15:44.497 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.498 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.498 [main] DEBUG Bank.BankImpl - Started function: transfer
-17:15:44.498 [main] DEBUG Bank.BankImpl - Started function: withdraw
-17:15:44.508 [main] DEBUG Bank.BankImpl - Finished function: withdraw
-17:15:44.508 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.512 [main] DEBUG Bank.BankImpl - Finished function: deposit
-17:15:44.526 [main] DEBUG Bank.BankImpl - Finished function: transfer
-17:15:44.526 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.527 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.527 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.527 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.545 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.546 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.547 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.555 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.556 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.566 [main] DEBUG Bank.BankImpl - Finished function: deposit
-17:15:44.566 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.566 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.566 [main] DEBUG Bank.BankImpl - Started function: withdraw
-17:15:44.572 [main] DEBUG Bank.BankImpl - Finished function: withdraw
-17:15:44.573 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.573 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.583 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.583 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.584 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.585 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.588 [main] DEBUG Bank.BankImpl - Started function: withdraw
-17:15:44.594 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.595 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.595 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.596 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.599 [main] DEBUG Bank.BankImpl - Started function: withdraw
-17:15:44.600 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
-17:15:44.607 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.607 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.607 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.608 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.610 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.610 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
-17:15:44.623 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.623 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.623 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.626 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.630 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.634 [main] DEBUG Bank.BankImpl - Finished function: deposit
-17:15:44.635 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.635 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.648 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.649 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.649 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.650 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.654 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.655 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
-17:15:44.662 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.662 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.662 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.665 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.667 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.668 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.698 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.698 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.698 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.703 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.706 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.710 [main] DEBUG Bank.BankImpl - Finished function: deposit
-17:15:44.710 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.715 [main] DEBUG Bank.BankImpl - Finished function: deposit
-17:15:44.716 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.716 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.724 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.725 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.725 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.726 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.730 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.730 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
-17:15:44.739 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.739 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.739 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.740 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.742 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.743 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
-17:15:44.757 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.758 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.758 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.760 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.765 [main] DEBUG Bank.BankImpl - Started function: deposit
-17:15:44.770 [main] DEBUG Bank.BankImpl - Finished function: deposit
-17:15:44.770 [main] DEBUG Bank.BankImpl - Started function: getBalance
-17:15:44.771 [main] DEBUG Bank.BankImpl - Finished function: getBalance
-17:15:44.778 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.778 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.778 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.780 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.781 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.782 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.786 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.786 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.787 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.793 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
-17:15:44.794 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.794 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.797 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.798 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.798 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.799 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.799 [main] DEBUG Bank.BankImpl - Finished function: createAccount
-17:15:44.799 [main] DEBUG Bank.BankImpl - Started function: createAccount
-17:15:44.800 [main] DEBUG Bank.BankImpl - Started function: findAccount
-17:15:44.800 [main] DEBUG Bank.BankImpl - Finished function: findAccount
-17:15:44.800 [main] DEBUG Bank.BankImpl - Finished function: createAccount
-17:15:44.805 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:21.932 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:21.942 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:21.942 [main] DEBUG Bank.BankImpl - Started function: transfer
+22:21:21.942 [main] DEBUG Bank.BankImpl - Started function: withdraw
+22:21:21.952 [main] DEBUG Bank.BankImpl - Finished function: withdraw
+22:21:21.952 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:21.962 [main] DEBUG Bank.BankImpl - Finished function: deposit
+22:21:21.972 [main] DEBUG Bank.BankImpl - Finished function: transfer
+22:21:21.972 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:21.972 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:21.972 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:21.980 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.031 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.031 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.031 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.031 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.031 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.031 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.031 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.047 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.047 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
+22:21:22.062 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.062 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.062 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.062 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.062 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.062 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.062 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.062 [main] DEBUG Bank.BankImpl - Started function: transfer
+22:21:22.078 [main] DEBUG Bank.BankImpl - Started function: withdraw
+22:21:22.078 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.078 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.078 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.078 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.094 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.094 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.094 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.094 [main] DEBUG Bank.BankImpl - Started function: transfer
+22:21:22.094 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Same ids
+22:21:22.100 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.100 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.100 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.100 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.100 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.100 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.100 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.100 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.116 [main] DEBUG Bank.BankImpl - Finished function: deposit
+22:21:22.116 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.116 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.116 [main] DEBUG Bank.BankImpl - Started function: transfer
+22:21:22.116 [main] DEBUG Bank.BankImpl - Started function: withdraw
+22:21:22.116 [main] DEBUG Bank.BankImpl - Finished function: withdraw
+22:21:22.116 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.131 [main] DEBUG Bank.BankImpl - Finished function: deposit
+22:21:22.131 [main] DEBUG Bank.BankImpl - Finished function: transfer
+22:21:22.131 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.131 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.131 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.131 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.163 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.163 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.163 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.178 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.178 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.178 [main] DEBUG Bank.BankImpl - Finished function: deposit
+22:21:22.178 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.178 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.178 [main] DEBUG Bank.BankImpl - Started function: withdraw
+22:21:22.194 [main] DEBUG Bank.BankImpl - Finished function: withdraw
+22:21:22.194 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.194 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.216 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.216 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.216 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.216 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.232 [main] DEBUG Bank.BankImpl - Started function: withdraw
+22:21:22.232 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.247 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.247 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.247 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.247 [main] DEBUG Bank.BankImpl - Started function: withdraw
+22:21:22.247 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
+22:21:22.263 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.263 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.263 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.263 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.278 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.278 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
+22:21:22.294 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.294 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.294 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.294 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.294 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.301 [main] DEBUG Bank.BankImpl - Finished function: deposit
+22:21:22.301 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.301 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.332 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.332 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.332 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.347 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.347 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.347 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
+22:21:22.363 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.363 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.363 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.363 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.363 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.363 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.363 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.363 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.363 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.379 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.379 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.394 [main] DEBUG Bank.BankImpl - Finished function: deposit
+22:21:22.394 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.403 [main] DEBUG Bank.BankImpl - Finished function: deposit
+22:21:22.403 [main] DEBUG Bank.BankImpl - Started function: getBalance
+22:21:22.403 [main] DEBUG Bank.BankImpl - Finished function: getBalance
+22:21:22.413 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.413 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.421 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.421 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.423 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.423 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
+22:21:22.443 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.443 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.443 [main] DEBUG Bank.BankImpl - Started function: findAccount
+22:21:22.443 [main] DEBUG Bank.BankImpl - Finished function: findAccount
+22:21:22.453 [main] DEBUG Bank.BankImpl - Started function: deposit
+22:21:22.453 [main] ERROR Bank.BankImpl - Thrown error: class Bank.Bank$AccountIdException with communicate: Cannot find account with that id
+22:21:22.463 [main] INFO  Bank.BankImpl - Object class Bank.BankImpl created
+22:21:22.463 [main] DEBUG Bank.BankImpl - Started function: createAccount
+22:21:22.463 [main] DEBUG Bank.BankImpl - Started function: findAccount

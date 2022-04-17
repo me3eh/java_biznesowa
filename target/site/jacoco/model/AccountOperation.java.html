@@ -5,19 +5,38 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name=&quot;AccountOperation&quot;)
+@NamedQueries({
+                @NamedQuery(name=&quot;operationsOnSpecificAccountInRangeOfDates&quot;,
+                        query=&quot;SELECT o FROM AccountOperation o &quot; +
+                                &quot;WHERE o.account.id=?1 &quot; +
+                                &quot;AND o.creationDate BETWEEN ?2 AND ?3&quot;),
+                @NamedQuery(name=&quot;whichOperationWasTheMostFrequent&quot;,
+                            query=&quot;SELECT o.type &quot; +
+                                    &quot;FROM AccountOperation o &quot;+
+                                    &quot;GROUP BY o.type &quot; +
+                                    &quot;HAVING count(o.id) &gt;= ALL(select count(a.id)&quot; +
+                                                    &quot;FROM AccountOperation a &quot; +
+                                                    &quot;GROUP BY a.type )&quot;
+                )
+})
 public class AccountOperation extends AbstractModel{
 
-<span class="fc" id="L10">    public enum OperationType { DEPOSIT, WITHDRAW, TRANSFER}</span>
+<span class="fc" id="L24">    public enum OperationType { DEPOSIT, WITHDRAW, TRANSFER}</span>
     @ManyToOne
     private Account account;
     private BigDecimal amount;
     private OperationType type;
-<span class="fc" id="L15">    public AccountOperation(Account account, BigDecimal amount, OperationType type){</span>
-<span class="fc" id="L16">        this.account = account;</span>
-<span class="fc" id="L17">        this.amount = amount;</span>
-<span class="fc" id="L18">        this.type = type;</span>
-<span class="fc" id="L19">    }</span>
-<span class="fc" id="L20">    public AccountOperation() {}</span>
+
+    public OperationType getType() {
+<span class="fc" id="L31">        return type;</span>
+    }
+
+<span class="fc" id="L34">    public AccountOperation(Account account, BigDecimal amount, OperationType type){</span>
+<span class="fc" id="L35">        this.account = account;</span>
+<span class="fc" id="L36">        this.amount = amount;</span>
+<span class="fc" id="L37">        this.type = type;</span>
+<span class="fc" id="L38">    }</span>
+<span class="fc" id="L39">    public AccountOperation() {}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -11,6 +11,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name="getAccountByNameAndAddress",
+                    query="SELECT b FROM Account b WHERE b.address=?1 AND b.name=?2"),
+        @NamedQuery(name="getAccountByPrefix", query="SELECT b FROM Account b WHERE b.name LIKE ?1"),
+        @NamedQuery(name="getAccountsWithBalanceInRange",
+                    query="SELECT b FROM Account b where b.balance between ?1 and ?2"),
+        @NamedQuery(name="getAccountWithMaxBalance",
+                query="SELECT b FROM Account b WHERE b.balance = (SELECT max(a.balance)" +
+                                                                    "FROM Account a)"),
+        @NamedQuery(name="AccountWithNoAccountOperation",
+                    query="SELECT b FROM Account b WHERE b.id NOT IN (SELECT DISTINCT o.account.id " +
+                                                                        "FROM AccountOperation o)"),
+        @NamedQuery(name="getAccountsWithBiggestAmountOfOperations",
+                    query="select b " +
+                            "from Account b " +
+                            "where b.id IN (SELECT o.account.id " +
+                                            "FROM AccountOperation o " +
+                                            "GROUP BY o.account.id " +
+                                            "HAVING COUNT(o.account.id) >= all( select count( c.account.id ) "+
+                                                                            "from AccountOperation c " +
+                                                                            "group by c.account.id ) )")
+})
 @Table(name="Account")
 public class Account extends AbstractModel{
     private String name;
@@ -37,10 +59,12 @@ public class Account extends AbstractModel{
         return balance;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void addAmount(BigDecimal balance){
-        System.out.println( this.balance );
         this.balance = this.balance.add(balance);
-        System.out.println( this.balance );
     }
 
     public boolean subtractAmount(BigDecimal balance){
@@ -63,5 +87,9 @@ public class Account extends AbstractModel{
         TransferOperationDao dao = new TransferOperationDaoJpaImpl();
         dao.save(aO);
         transferOperations.add( aO );
+    }
+
+    public String getAddress() {
+        return address;
     }
 }

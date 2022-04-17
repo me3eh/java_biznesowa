@@ -112,42 +112,40 @@ public class BankImpl implements Bank{
 
 <span class="fc bfc" id="L113" title="All 2 branches covered.">        if( !account.subtractAmount( amount ) )</span>
 <span class="fc" id="L114">            throw new InsufficientFundsException(&quot;Insufficient Funds&quot;);</span>
-<span class="fc" id="L115">        System.out.println(&quot;Odjete&quot; + amount + &quot; zostało - &quot; + account.getBalance());</span>
-<span class="fc" id="L116">        account.addAccountOperation(amount, AccountOperation.OperationType.WITHDRAW);</span>
+<span class="fc" id="L115">        account.addAccountOperation(amount, AccountOperation.OperationType.WITHDRAW);</span>
 
-<span class="fc" id="L118">        AccountDaoJpaImpl accountDao = new AccountDaoJpaImpl();</span>
-<span class="fc" id="L119">        accountDao.update( account );</span>
+<span class="fc" id="L117">        AccountDaoJpaImpl accountDao = new AccountDaoJpaImpl();</span>
+<span class="fc" id="L118">        accountDao.update( account );</span>
 
-<span class="fc" id="L121">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
-<span class="fc" id="L122">    }</span>
+<span class="fc" id="L120">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+<span class="fc" id="L121">    }</span>
 
     @Override
     public void transfer(Long idSource, Long idDestination, BigDecimal amount) throws AccountIdException,
                                                                                         InsufficientFundsException {
-<span class="fc" id="L127">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
-<span class="fc" id="L128">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
+<span class="fc" id="L126">        String nameofCurrMethod = new Throwable().getStackTrace()[0].getMethodName();</span>
+<span class="fc" id="L127">        parentLogger.debug(&quot;Started function: &quot; + nameofCurrMethod );</span>
 
-<span class="fc bfc" id="L130" title="All 2 branches covered.">        if(idDestination.equals(idSource)){</span>
-<span class="fc" id="L131">            String exceptionMessage = &quot;Same ids&quot;;</span>
-<span class="fc" id="L132">            parentLogger.error(&quot;Thrown error: &quot; + AccountIdException.class + &quot; with communicate: &quot; + exceptionMessage);</span>
-<span class="fc" id="L133">            throw new AccountIdException(exceptionMessage);</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if(idDestination.equals(idSource)){</span>
+<span class="fc" id="L130">            String exceptionMessage = &quot;Same ids&quot;;</span>
+<span class="fc" id="L131">            parentLogger.error(&quot;Thrown error: &quot; + AccountIdException.class + &quot; with communicate: &quot; + exceptionMessage);</span>
+<span class="fc" id="L132">            throw new AccountIdException(exceptionMessage);</span>
         }
 
 
-<span class="fc" id="L137">        withdraw(idSource, amount);</span>
-<span class="fc" id="L138">        deposit(idDestination, amount);</span>
+<span class="fc" id="L136">        withdraw(idSource, amount);</span>
+<span class="fc" id="L137">        deposit(idDestination, amount);</span>
 
-<span class="fc" id="L140">        Account account = findAccountByID(idSource);</span>
-<span class="fc" id="L141">        Account accountDestination = findAccountByID(idDestination);</span>
+<span class="fc" id="L139">        Account account = findAccountByID(idSource);</span>
+<span class="fc" id="L140">        Account accountDestination = findAccountByID(idDestination);</span>
 
-<span class="fc" id="L143">        account.addAccountOperation(amount, AccountOperation.OperationType.TRANSFER);</span>
-<span class="fc" id="L144">        accountDestination.addAccountOperation(amount, AccountOperation.OperationType.TRANSFER);</span>
+<span class="fc" id="L142">        account.addTransferOperation(amount, AccountOperation.OperationType.TRANSFER, accountDestination, &quot;Some name&quot;);</span>
 
-<span class="fc" id="L146">        AccountDaoJpaImpl accountDao = new AccountDaoJpaImpl();</span>
-<span class="fc" id="L147">        accountDao.update(account);</span>
-<span class="fc" id="L148">        accountDao.update(accountDestination);</span>
+<span class="fc" id="L144">        AccountDaoJpaImpl accountDao = new AccountDaoJpaImpl();</span>
+<span class="fc" id="L145">        accountDao.update(account);</span>
+<span class="fc" id="L146">        accountDao.update(accountDestination);</span>
 
-<span class="fc" id="L150">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
-<span class="fc" id="L151">    }</span>
+<span class="fc" id="L148">        parentLogger.debug(&quot;Finished function: &quot; + nameofCurrMethod );</span>
+<span class="fc" id="L149">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

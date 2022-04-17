@@ -112,7 +112,6 @@ public class BankImpl implements Bank{
 
         if( !account.subtractAmount( amount ) )
             throw new InsufficientFundsException("Insufficient Funds");
-        System.out.println("Odjete" + amount + " zostało - " + account.getBalance());
         account.addAccountOperation(amount, AccountOperation.OperationType.WITHDRAW);
 
         AccountDaoJpaImpl accountDao = new AccountDaoJpaImpl();
