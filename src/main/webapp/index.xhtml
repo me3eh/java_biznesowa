@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>demo</title>
+    <h:outputStylesheet name="css/app.css"/>
+</h:head>
+
+<h:body>
+    <h1>Liczby pierwsze</h1>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="3" styleClass="app-panelgrid-noborder">
+                <p:outputLabel for="@next" value="Podaj liczbę"/>
+                <p:inputText id="txtNumber" value="#{primeNumberController.number}" pt:placeholder="Wprowadź wartość" required="true" />
+                <p:message for="txtNumber"/>
+                <p:commandButton process="@this txtNumber" update="@form" value="Sprawdź"
+                                 action="#{primeNumberController.onCheck}"/>
+                <p:outputPanel id="pnlPrimeCheckResult">
+                    #{primeNumberController.number != null ? 'Liczba '.concat(primeNumberController.number).concat(primeNumberController.prime ? ' jest pierwsza' : ' nie jest pierwsza') : '' }
+                </p:outputPanel>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+
+</h:body>
+
+</html>
